@@ -13,7 +13,14 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        //Make character move with input from keyboard
+        
+            CalculateMovement();
+    }
+    
+    
+        void CalculateMovement()
+        {
+            //Make character move with input from keyboard
 
     //1. create and get the input type/axis(float, int, horizontal, vertical, etc.), then get the axis you need for player input movement
     //2. get the input from that axis
@@ -28,10 +35,24 @@ public class Player : MonoBehaviour
 
 
         //more efficient way to write the code above is to combine the two lines of code into one line of code, like this:
-        
+
         //1. create a new Vector3 with the horizontal and vertical input, then multiply that by the speed and time.deltaTime
         transform.Translate(new Vector3(horizontalInput, verticalInput, 0)* _speed *Time.deltaTime); //makes the player move in all directions with the horizontal and vertical input
         
-        
+        //if player position on the y or x axis is greater than 3.8 or less than -3.8, then set the position to 3.8 or -3.8 respectively
+       
+       
+
+            if (transform.position.x > 8.3f)
+            {
+                transform.position = new Vector3(-8.3f, transform.position.y, 0);
+            }
+            else if (transform.position.x < -8.3f)
+            {
+                transform.position = new Vector3(8.3f, transform.position.y, 0);
+            }
+            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
+           
+        }
     }
-}
+

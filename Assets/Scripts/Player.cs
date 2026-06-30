@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         // take players current position = new postion of (0, 0, 0)
-        transform.position = new Vector3(0, 0, 0);
+       // transform.position = new Vector3(0, 0, 0);
     }
 
     

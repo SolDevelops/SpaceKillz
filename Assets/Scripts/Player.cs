@@ -70,7 +70,19 @@ public class Player : MonoBehaviour
                  Instantiate(_Laser, transform.position + Vector3.up * _Offset_shot, Quaternion.identity);
             
             }
+
        
+        }
+
+        
+            private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            Debug.Log(other.transform.name);
+        }
+            
         }
     }
 

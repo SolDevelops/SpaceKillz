@@ -24,4 +24,10 @@ public class Laser : MonoBehaviour
 
         
     }
+
+    // private void OnTriggerEnter(Collider other)
+    //{
+      //  Destroy(this.gameObject);
+        //Debug.Log(other.transform.name);
+    //}
 }

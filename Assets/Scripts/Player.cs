@@ -4,16 +4,25 @@ public class Player : MonoBehaviour
 {
   
     [SerializeField] private float _speed =5f;
+    [SerializeField] private GameObject _Laser;
+
+    [SerializeField] private float _Offset_shot = 1f;
     void Start()
     {
         // take players current position = new postion of (0, 0, 0)
-       // transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(0, 0, 0);
     }
 
     
     void Update()
     {
-        
+        // if i click left mouse button
+        //spawn laser
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Instantiate(_Laser, transform.position + Vector3.up * _Offset_shot, Quaternion.identity);
+            //Debug.Log("Mouse button clicked");
+        }
             CalculateMovement();
     }
     

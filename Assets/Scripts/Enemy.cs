@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         // after enemy spawn, make it move down with a speed of 4 units per second
@@ -20,7 +19,7 @@ public class Enemy : MonoBehaviour
             transform.position = new Vector3(Random.Range(-9.14f, 9.14f), 5.58f, 0);
         }
     }
-
+        // if enemy collides with player, destroy enemy and call the Damage() method on the player
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

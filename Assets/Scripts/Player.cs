@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _Offset_shot = 1f;
     [SerializeField] private float _fireRate = 0.5f;
     [SerializeField] private float _nextFire = -1f;
+    [SerializeField] private int _healthPoints = 100;
     void Start()
     {
         // take players current position = new postion of (0, 0, 0)
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     {
             CalculateMovement();
             FireLaser();
+            
+            
           
     }
     
@@ -77,12 +80,26 @@ public class Player : MonoBehaviour
         
             private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Enemy")
+            if (other.tag =="Enemy")
         {
-            Destroy(this.gameObject);
-            Debug.Log(other.transform.name);
+           
+            Debug.Log("Hit By Enemy, Health is now: " + _healthPoints);
         }
             
         }
+
+        public void Damage()
+    {
+        _healthPoints -= 25;
+
+
+        
+        if (_healthPoints < 1)
+        {
+            Destroy(this.gameObject);
+            Debug.Log("Hit by Enemy, health is now: " + _healthPoints);
+
+        }
+    }
     }
 

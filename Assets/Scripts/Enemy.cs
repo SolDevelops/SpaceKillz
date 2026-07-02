@@ -23,9 +23,27 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Player")
+        {
+            // get the player component from the Player game object, and if it exists, call the Damage() method on it
+            Player player = other.transform.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Damage();
+            }
+
+            Destroy(this.gameObject);
+            Debug.Log(other.transform.name);
+        }
+
+
         if (other.tag == "Laser")
+        {
         Destroy(this.gameObject);
-        Destroy(other.gameObject);
+        Destroy(other.gameObject);    
+        }
         Debug.Log(other.transform.name);
     }
+
+    
 }
